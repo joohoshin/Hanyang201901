@@ -16,10 +16,18 @@ rc('font', family=font_name)
 
 ### 파일 데이터 읽기
 
+# 워킹 디렉토리 확인
+import os
+os.getcwd()
+
 # 파일 경로 지정
-# 경로 지정시 폴더 구분 기호를 \를 한번 더 적어준다. 
-path = 'C:\\Users\\jooho\\Downloads\\2015_ accident_statistics by age'
-file = '2015 accident by age and sex.csv'
+path = os.getcwd() #현재 working forlder에 파일이 있을 때 사용
+
+path = 'C:\\Users\\jooho\\Documents\\GitHub\\Hanyang201901' #직접 지정할 때
+os.chdir(path)
+
+
+file = '2015년_연령층별_성별_교통사고.csv'
 
 # 파일명과 합쳐준다. 
 path_file = path + '\\' + file
@@ -65,7 +73,8 @@ sns.barplot(x='연령층', y='사망율_발생건수', hue='성별', data=accide
 accident2.to_csv('accident2.csv', encoding = 'cp949')
 
 # 엑셀 파일 읽기
-xldata = pd.read_excel('C:\\Users\\jooho\\Downloads\\2015_ accident_statistics by age\\2015 accident by age and sex.xlsx')
+xlsxfile = path + '\\' + '2015년_연령층별_성별_교통사고.xlsx'
+xldata = pd.read_excel(xlsxfile)
 
 ### 엑셀 파일 쓰기
 # 엑셀 파일 생성
@@ -77,9 +86,7 @@ accident2.to_excel(xlfile, sheet_name = 'accident2')
 # 엑셀 파일 저장
 xlfile.save()
 
-# 워킹 디렉토리 확인
-import os
-os.getcwd()
+
 
 
 

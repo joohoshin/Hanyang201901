@@ -62,6 +62,7 @@ for i in range(iteration):
     rnd_ys.append(rnd_y)
 
 results_df = pd.DataFrame({'x':rnd_xs, 'y':rnd_ys, 'final':results})
+results_df = results_df.query('final !=0')
 sns.scatterplot(x='x', y='y', hue='final', data=results_df )
 
 # 최종 넓이 계산 (근사치)
